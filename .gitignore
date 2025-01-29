@@ -24,3 +24,5 @@ build
 *.sln
 *.sw?
 .env
+
+*storybook.log
