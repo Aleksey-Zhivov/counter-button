@@ -1,5 +1,5 @@
-import { FC } from "react";
-import { useButtonContext } from "./useButtonContext";
+import { FC } from 'react';
+import { useButtonContext } from './useButtonContext';
 
 const ButtonLoader: FC = () => {
   const { isLoading } = useButtonContext();

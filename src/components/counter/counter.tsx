@@ -1,17 +1,30 @@
-import { FC } from "react";
+import { FC } from 'react';
 import '../../styles/counter.styl';
-import { formatCounterValue } from "../../utils/valueFormatter";
+import { formatCounterValue } from '../../utils/valueFormatter';
+import { ICounterProps, TCounterSize } from './types';
+import { useButtonContext } from '../button/useButtonContext';
+import { TButtonSize } from '@components/button/types';
 
-interface CounterProps {
-  value: string | number;
-  variant?: 'primary' | 'secondary';
-  size?: 8 | 12 | 16 | 20 | 24;
-}
+const Counter: FC<ICounterProps> = ({ value }) => {
+  const { variant, size } = useButtonContext();
 
-const Counter: FC<CounterProps> = ({ value, variant='primary', size='20' }) => (
-    <span className={`counter ${variant} size-${size}`}>
-        {(size === 8 || size === 12) ? '' : formatCounterValue(value)}
+  const getCounterSize = (buttonSize: TButtonSize): TCounterSize => {
+    const sizeMap: Record<TButtonSize, TCounterSize> = {
+      28: 16,
+      36: 20,
+      56: 24,
+    };
+
+    return sizeMap[buttonSize] || 20;
+  };
+
+  const counterSize = getCounterSize(size);
+
+  return (
+    <span className={`counter ${variant} size-${counterSize}`}>
+      {counterSize === 8 || counterSize === 12 ? '' : formatCounterValue(value)}
     </span>
-);
+  );
+};
 
 export default Counter;

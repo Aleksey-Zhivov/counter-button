@@ -1,34 +1,91 @@
+@import './global.styl'
+
 .button
-    display inline-flex
+    display flex
     align-items center
     justify-content center
     padding 8px 16px
+    border none
     border-radius 8px
     font-family 'Roboto', sans-serif
     font-size 16px
-    font-weight 500
+    font-weight $font-weight-medium
     cursor pointer
     position relative
     transition all 0.3s ease
 
     &.primary
-        background rgba(255, 87, 34, 1)
-        color white
+        background $color-primary
+        color $color-text-primary
+
+        &::before
+            content ""
+            position absolute
+            top 0
+            left 0
+            width 0
+            height 100%
+            background $color-text-primary
+            opacity 0.1
+            transition width 0.3s ease-in-out
+            z-index 0
+
+        &:hover::before
+            width 100%
 
     &.secondary
-        background rgba(46, 47, 51, 0.12)
-        color rgba(46, 47, 51, 1)
+        background $color-secondary
+        color $color-text-secondary
 
-    &.disabled
-        background rgba(46, 47, 51, 0.36)
-        color rgba(255, 255, 255, 0.6)
-        cursor not-allowed
+        &::before
+            content ""
+            position absolute
+            top 0
+            left 0
+            width 0
+            height 100%
+            background $color-text-secondary
+            opacity 0.1
+            transition width 0.3s ease-in-out
+            z-index 0
 
-    &:hover:not(.disabled)
-        background rgba(255, 87, 34, 0.9)
+        &:hover::before
+            width 100%
 
-    &:active:not(.disabled)
-        background rgba(255, 87, 34, 0.8)
+    &.size-28
+        font-size $loader-size-28
+        padding 6px 10px
+        
+        .button-label
+            margin-right 4px
+        
+        .loader
+            width $loader-size-28
+            height $loader-size-28
+
+    &.size-36
+        font-size $loader-size-36
+        padding 8px 12px
+        
+        .button-label
+            margin-right 6px
+        
+        .loader
+            width $loader-size-36
+            height $loader-size-36
+
+    &.size-56
+        font-size $loader-size-56
+        padding 16px
+        
+        .button-label
+            margin-right 8px
+        
+        .loader
+            width $loader-size-56
+            height $loader-size-56
+
+    &:active
         transform scale(0.95)
 
     &.loading
@@ -45,10 +102,14 @@
     position absolute
     width 24px
     height 24px
-    border 3px solid rgba(255, 255, 255, 0.3)
-    border-top-color white
+    border 2px solid $color-text-primary
+    border-top-color transparent
     border-radius 50%
     animation spin 1s linear infinite
+
+    .button.secondary &
+        border-color $color-text-secondary
+        border-top-color transparent
 
 @keyframes spin
     from

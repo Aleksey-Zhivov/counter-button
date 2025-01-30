@@ -1,19 +1,22 @@
+@import './global.styl'
+
 .counter
   display flex
   align-items center
   justify-content center
-  font-weight bold
+  font-weight $font-weight-medium
+  border none
   border-radius 50%
   text-align center
   box-sizing border-box
 
 .primary
-  background rgba(47, 182, 117, 1)
-  color rgba(255, 255, 255, 1)
+  background $counter-background-primary
+  color $color-text-primary
 
 .secondary
-  background rgba(131, 102, 86, 0.12)
-  color rgba(46, 47, 51, 1)
+  background $counter-background-secondary
+  color $color-text-secondary
 
 .size-24
   min-width 24px

@@ -1,6 +1,6 @@
-import { FC } from "react";
-import { useButtonContext } from "./useButtonContext";
-import Counter from "../counter/counter";
+import { FC } from 'react';
+import { useButtonContext } from './useButtonContext';
+import Counter from '../counter/counter';
 
 const ButtonCounter: FC = () => {
   const { count } = useButtonContext();
