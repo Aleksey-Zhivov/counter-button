@@ -8,7 +8,7 @@ interface CounterProps {
   size?: 8 | 12 | 16 | 20 | 24;
 }
 
-const Counter: FC<CounterProps> = ({ value, variant, size }) => (
+const Counter: FC<CounterProps> = ({ value, variant='primary', size='20' }) => (
     <span className={`counter ${variant} size-${size}`}>
         {(size === 8 || size === 12) ? '' : formatCounterValue(value)}
     </span>
